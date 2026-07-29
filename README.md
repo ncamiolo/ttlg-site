@@ -8,10 +8,15 @@ This replaces the Canva site with plain HTML/CSS, ready for GitHub + Cloudflare 
 - `images/` — empty folder; drop in real photos (see below)
 
 ## 1. Add your photos
-`index.html` is already wired up to look for 14 backdrop photos in the `images/` folder. **You don't need to edit any code** — just export each photo from Canva and save it into `images/` using these exact file names (lowercase, matches what's already in the HTML):
+`index.html` is already wired up to look for these photos in the `images/` folder. **You don't need to edit any code** — just export each photo from Canva and save it into `images/` using these exact file names (lowercase, matches what's already in the HTML):
 
 ```
 images/
+  hero-photo.jpg                 (circular photo in the hero section)
+  service-event-booth.jpg        (photo above "Event Photo Booth Rental" card)
+  service-custom-backdrops.jpg   (photo above "Custom Backdrops" card)
+  service-wedding-packages.jpg   (photo above "Wedding & Event Packages" card)
+  why-choose-us.jpg              (large photo in the "Why Choose Us" section)
   red-curtain.jpg
   yellow-balloons.jpg
   silver-disco.jpg
@@ -28,11 +33,9 @@ images/
   merry-and-bright.jpg
 ```
 
-Once a file with the right name lands in `images/`, that backdrop photo will show up automatically when you open `index.html` — no further editing needed. Missing files just won't show an image (broken image icon) until you add them, so you can do this gradually.
+Once a file with the right name lands in `images/`, that photo will show up automatically when you open `index.html` — no further editing needed. Missing files just won't show an image (broken image icon) until you add them, so you can do this gradually.
 
-Before saving them in, resize to roughly 1200–1600px on the longest side and compress with a free tool like [Squoosh](https://squoosh.app) — keeps the site fast to load.
-
-Want a hero photo too (the circular photo from your original site)? Let me know and I'll add that markup for you as well.
+Before saving them in, resize to roughly 1200–1600px on the longest side and compress with a free tool like [Squoosh](https://squoosh.app) — keeps the site fast to load. The hero and why-choose-us photos look best as portrait/tall crops; the service card photos look best as roughly 4:3 landscape crops.
 
 ## 2. Push to GitHub
 ```bash

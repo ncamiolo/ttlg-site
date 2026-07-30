@@ -4,14 +4,32 @@ This replaces the Canva site with plain HTML/CSS, ready for GitHub + Cloudflare 
 
 ## What's here
 - `index.html` — the whole one-page site (Hero, Services, Why Choose Us, Pricing, Reviews, FAQ, Backdrops, Contact)
-- `styles.css` — styling, matching your current dark navy / gold look
+- `styles.css` — styling, matching your current dark navy / light blue look
+- `robots.txt` — tells search engines they can crawl the whole site
+- `sitemap.xml` — tells search engines what pages exist
 - `images/` — empty folder; drop in real photos (see below)
+
+## 6. SEO — what's already done, and what's left
+Already built in:
+- Descriptive `<title>` and meta description with real keywords ("photo booth rentals," "Southwest Florida")
+- Open Graph + Twitter Card tags, so links shared on Facebook/iMessage/Twitter show a nice preview card
+- `LocalBusiness` structured data (helps Google understand this is a local business)
+- `FAQPage` structured data — this can make your FAQ answers show up directly in Google search results as an expandable list
+- Clean heading structure (one H1, then H2s per section, H3s for cards) and descriptive `alt` text on every image
+- `robots.txt` and `sitemap.xml` for crawlability
+
+Two things worth doing once the site is live:
+1. **Submit to Google Search Console** ([search.google.com/search-console](https://search.google.com/search-console)) — add your domain, verify ownership (Cloudflare has a simple DNS-based verification option), and submit `https://ttlgphotobooths.com/sitemap.xml`. This is what actually gets you indexed and gets you into local search results.
+2. **Add a real `images/og-image.jpg`** — this is the photo used when your site link is shared on social media. Recommended size: 1200×630px, JPG. Until it's added, shared links just won't show a preview image (no error, just a blank spot).
+
+Optional but valuable: **add a phone number and physical service address** to the `LocalBusiness` structured data block near the top of `index.html` — this significantly helps local map-pack rankings if you're comfortable listing them publicly. Ask me if you'd like this added.
 
 ## 1. Add your photos
 `index.html` is already wired up to look for these photos in the `images/` folder. **You don't need to edit any code** — just export each photo from Canva and save it into `images/` using these exact file names (lowercase, matches what's already in the HTML):
 
 ```
 images/
+  logo.png                        (your logo, shown top-left in the header)
   hero-photo.jpg                 (circular photo in the hero section)
   service-event-booth.jpg        (photo above "Event Photo Booth Rental" card)
   service-custom-backdrops.jpg   (photo above "Custom Backdrops" card)
@@ -36,6 +54,8 @@ images/
 Once a file with the right name lands in `images/`, that photo will show up automatically when you open `index.html` — no further editing needed. Missing files just won't show an image (broken image icon) until you add them, so you can do this gradually.
 
 Before saving them in, resize to roughly 1200–1600px on the longest side and compress with a free tool like [Squoosh](https://squoosh.app) — keeps the site fast to load. The hero and why-choose-us photos look best as portrait/tall crops; the service card photos look best as roughly 4:3 landscape crops.
+
+**Logo specifically:** save it as a **PNG with a transparent background** (not JPG) if your logo has one — that way it won't show a white or colored box behind it against the dark navy header. It displays at 48px tall, so anything roughly 150–300px tall as the source file is plenty.
 
 ## 2. Push to GitHub
 ```bash
@@ -62,8 +82,7 @@ git push -u origin main
 4. This can take anywhere from a few minutes to 24 hours to propagate.
 5. Back in Cloudflare Pages → your project → **Custom domains** → add `ttlgphotobooths.com` (and `www.ttlgphotobooths.com` if you want both).
 
-## 5. Contact form note
-The form in `index.html` is set up for Netlify-style form handling (`data-netlify="true"`), which **won't work on Cloudflare Pages**. Options:
-- Use [Cloudflare Pages Functions](https://developers.cloudflare.com/pages/functions/) with a small script to email submissions
-- Use a third-party form service like Formspree or Web3Forms (just point the form's `action` at their endpoint)
-- Simplest: remove the form and just keep the `mailto:` link
+## 5. Contact form
+The contact section now uses your HoneyBook widget embed — no setup needed, it's already wired in and will pull your live HoneyBook form styling and submission handling automatically. Submissions go straight to your HoneyBook account like they would on any other HoneyBook-embedded site.
+
+Note: the widget loads via HoneyBook's own script (`widget.honeybook.com`), so it needs an internet connection to render — it'll show blank in any offline/local preview, but works normally once the site is live.
